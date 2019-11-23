@@ -2,9 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from "./components/Header"
 
-import './App.css';
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
