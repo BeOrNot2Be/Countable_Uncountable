@@ -2,6 +2,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,6 +12,14 @@ const useStyles = makeStyles(theme => ({
   header: {
     textAlign: 'center',
     fontSize: '32px',
+    margin: '2rem',
+  },
+  centerContainer: {
+    height: 'calc(100vh - 120px)',
+  },
+  textContainer: {
+    width: '100%',
+    maxWidth: '550px'
   }
 }));
 
@@ -21,13 +30,25 @@ export default function SimpleList(props) {
   return (
     <div className={classes.root} {...props}>
       <Container>
-        <Typography className={classes.header}>
-          some Header
-        </Typography>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.centerContainer}
+          >
+          <Grid item className={classes.textContainer}>
+            <Typography  variant="h2" component="h2" className={classes.header}>
+            Purpose
+            </Typography>
 
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </Typography>
+            <Typography>
+            This website is designed with the purpose to teaching you about the use of accounting and non-accounting nouns, during your visit to this website you will learn basic concepts and practice with activate that we have for you .
+            We hope you enjoy your visit to this website
+            Are you ready! let's learn
+            </Typography> 
+          </Grid>
+      </Grid>
       </Container>
     </div>
   );

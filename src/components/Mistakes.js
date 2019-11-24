@@ -38,9 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   mistakeExample: {
     padding: theme.spacing(3, 2),
- 
+    backgroundColor: "#fbfbfb",
   },
   mistakeRule: {
+    backgroundColor: "#fbfbfb",
     padding: theme.spacing(3, 2),
   },
 }));
@@ -95,15 +96,15 @@ const mistakes = [
     {
         ID: 0,
         header: "Mistake 1",
-        wrong: 'wrong example n1 wrong example n1 wrong example n1 wrong example n1',
-        right: 'right example n1 right example n1 right example n1 right example n1',
+        wrong: (<span>wrong <span style={{color:'red'}}>example</span> n1 wrong example n1 wrong example n1 wrong example n1</span>),
+        right: (<span>right <span style={{color:'green'}}>example</span> n1 right example n1 right example n1 right example n1</span>),
         rule: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     },
     {
         ID: 1,
         header: "Mistake 2",
-        wrong: 'wrong example n2 wrong example n1 wrong example n1 wrong example n1',
-        right: 'right example n2 right example n1 right example n1 right example n1',
+        wrong: (<span>wrong <span style={{color:'red'}}>example</span> n2 wrong example n2 wrong example n2 wrong example n2</span>),
+        right: (<span>right <span style={{color:'green'}}>example</span> n2 right example n2 right example n2 right example n2</span>),
         rule: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
     }
 ];

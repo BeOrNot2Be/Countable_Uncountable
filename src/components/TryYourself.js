@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Fade from '@material-ui/core/Fade';
 
 
 const useStyles = makeStyles(theme => ({
@@ -15,20 +16,70 @@ const useStyles = makeStyles(theme => ({
   header: {
     textAlign: 'center',
     fontSize: '32px',
+  },
+  centerContainer: {
+    height: 'calc(100vh - 120px)',
+  },
+  buttonAnswer: {
+    boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
+    fontSize: '22px',
+    margin: '1rem',
+    backgroundColor: "#fbfbfb",
+    border:'10px solid #fbfbfb',
+  },
+  questionContainer: {
+    backgroundColor: "#fbfbfb",
+    padding: theme.spacing(2, 3),
+  },
+  mistakeExample: {
+    padding: theme.spacing(2, 3),
+    backgroundColor: "#fbfbfb",
   }
 }));
 
 const questions = [
     {
-        str: "lalal",
+        str: "Coffee",
         answer: true,
         rule: '1some rule',
+        choice: ['some', 'a']
     },
     {
-      str: "lalal3",
+      str: "Bottle",
       answer: false,
       rule: '2some rule',
-    }
+      choice: ['some', 'a']
+    },
+    {
+        str: "Student",
+        answer: false,
+        rule: '2some rule',
+        choice: ['some', 'a']
+    },
+    {
+        str: "Water",
+        answer: true,
+        rule: '2some rule',
+        choice: ['some', 'a']
+    },
+    {
+        str: "Shoes",
+        answer: false,
+        rule: '2some rule',
+        choice: ['some', 'a']
+    },
+    {
+        str: "Sadness",
+        answer: true,
+        rule: '2some rule',
+        choice: ['some', 'a']
+    },
+    {
+        str: "Cat",
+        answer: false,
+        rule: '2some rule',
+        choice: ['some', 'a']
+    },
 ]
 
 
@@ -39,7 +90,6 @@ export default function SimpleList(props) {
   const [score, setScore] = React.useState(0);
 
   return (
-    <div className={classes.root}>
       <div className={classes.root} {...props}>
       <Container>
        
@@ -50,6 +100,7 @@ export default function SimpleList(props) {
                     direction="row"
                     justify="center"
                     alignItems="center"
+                    className={classes.centerContainer}
                 >
                     <Grid item>
                         <Typography>
@@ -60,39 +111,58 @@ export default function SimpleList(props) {
             ) : (
                 <Grid
                     container
-                    direction="row"
-                    justify="center"
+                    direction="column"
+                    justify="space-evenly"
                     alignItems="center"
+                    className={classes.centerContainer}
                 >
                     <Grid item>
 
-                        <Paper className={classes.mistakeExample}>
+                        <Paper className={classes.questionContainer}>
                             <Typography component="p">
                                 {questions[question-1].str}
                             </Typography>
-                            <Button onClick={()=>{setSolved(true); setScore(score + (true === questions[question-1].answer)) }}>
-                                True
-                            </Button>
-                            <Button onClick={()=>{setSolved(true); setScore(score + (false === questions[question-1].answer)) }}>
-                                False
-                            </Button>
                         </Paper>
 
-                        {solved? (
-                            <>
-                                <Paper className={classes.mistakeExample}>
-                                    <Typography component="p">
-                                        {questions[question-1].rule}
-                                    </Typography>
-                                </Paper>
-                                <Button onClick={()=>{setSolved(false);setQuestions(question+1)}}>
-                                    Next question ->
-                                </Button>
-                            </>
-                        ) : (
-                            ""
-                        )}
+                        <div>
+                            <Button 
+                                className={classes.buttonAnswer}
+                                onClick={()=>{
+                                    setSolved(true);
+                                    setScore(score + (true === questions[question-1].answer))
+                                    }}
+                                variant="outlined"
+                                color="primary"
+                                disabled={solved}
+                                    >
+                                {questions[question-1].choice[0]}
+                            </Button>
+                            <Button
+                                className={classes.buttonAnswer}
+                                onClick={()=>{
+                                    setSolved(true);
+                                    setScore(score + (false === questions[question-1].answer)) 
+                                    }}
+                                variant="outlined"
+                                color="primary"    
+                                disabled={solved}
+                                    >
+                                {questions[question-1].choice[1]}
+                            </Button>
+                        </div>
                     </Grid>
+                    <Fade in={solved}>
+                        <Grid item >
+                            <Paper className={classes.mistakeExample}>
+                                <Typography component="p">
+                                    {questions[question-1].rule}
+                                </Typography>
+                            </Paper>
+                            <Button onClick={()=>{setSolved(false);setQuestions(question+1)}}>
+                                Next question ->
+                            </Button>
+                        </Grid>
+                    </Fade>
                 </Grid>
             )
         : (
@@ -101,6 +171,7 @@ export default function SimpleList(props) {
             direction="row"
             justify="center"
             alignItems="center"
+            className={classes.centerContainer}
         >
             <Grid item>
                 <Button onClick={()=>setQuestions(1)}>
@@ -110,7 +181,6 @@ export default function SimpleList(props) {
         </Grid>
        )}
       </Container>
-    </div>
     </div>
   );
 }
