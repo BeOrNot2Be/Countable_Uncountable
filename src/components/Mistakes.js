@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'calc(100vh - 120px)',
   },
   Mistake: {
-      height: 'calc(100vh - 120px)',
+      minHeight: 'calc(100vh - 120px)',
   },
   mistakeExample: {
     padding: theme.spacing(3, 2),
@@ -58,6 +58,7 @@ const MistakeComponent = (props) => {
             justify="space-between"
             alignItems="center"
             className={classes.Mistake}
+            spacing={2}
             >
                 <Grid item>
                     <Typography variant="h2" component="h2" className={classes.mistakeHeader}>
@@ -104,48 +105,61 @@ const  uncountable_plural_only = "Some uncountable nouns are only plural, with n
 const mistakes = [
     {
         ID: 0,
+        header: "Intro",
+        wrong: "In English grammar, countable nouns are individual people, animals, places, things, or ideas which can be counted. Uncountable nouns are not individual objects, so they cannot be counted. Here, we’ll take a look at countable and uncountable nouns and provide both countable noun examples and uncountable noun examples. Although the concept may seem challenging, you’ll soon discover that these two different noun types are very easy to use.",
+        right: (<span>
+                <h4>Countable Noun</h4>
+                Anything that can be counted, whether singular – a dog, a house, a friend, etc. or plural – a few books, lots of oranges, etc. is a countable noun. The following countable noun examples will help you to see the difference between countable and uncountable nouns. Notice that singular verbs are used with singular countable nouns, while plural verbs are used with plural countable nouns.
+                </span>),
+        rule: (<span>
+            <h4>Uncountable Noun</h4>
+            Anything that cannot be counted is an uncountable noun. Even though uncountable nouns are not individual objects, they are always singular and one must always use singular verbs in conjunction with uncountable nouns. The following uncountable noun examples will help you to gain even more understanding of how countable and uncountable nouns differ from one another. Notice that singular verbs are always used with uncountable nouns.
+            </span>),
+    },
+    {
+        ID: 1,
         header: "Article",
         wrong: (<span>The program aimed at improving the safety of aircraft operations during <span style={{color:'red'}}>a severe winter weather</span>.</span>),
         right: (<span>The program aimed at improving the safety of aircraft operations during <span style={{color:'green'}}> severe winter weather</span>.</span>),
         rule: uncountable_plural_form
     },
     {
-        ID: 1,
+        ID: 2,
         header: "Plural form #1",
         wrong: (<span>Arbitration allows resolution of disputes in cases involving the movement by <span style={{color:'red'}}>waters</span> of goods required for resupply services.</span>),
         right: (<span>Arbitration allows resolution of disputes in cases involving the movement by <span style={{color:'green'}}>water</span> of goods required for resupply services.</span>),
         rule: uncountable_plural_form
     },
     {
-        ID: 2,
+        ID: 3,
         header: "Plural form #2",
         wrong: (<span>Estimated useful lives currently range between three to five years for electronic <span style={{color:'red'}}>equipments and furnitures</span>.</span>),
         right: (<span>Estimated useful lives currently range between three to five years for electronic <span style={{color:'green'}}>equipment and furniture</span>.</span>),
         rule: uncountable_plural_form
     },
     {
-        ID: 3,
+        ID: 4,
         header: "Determiners #1",
         wrong: (<span>The Company may generate <span style={{color:'red'}}>fewer</span> revenue from the sale of these devices than from the sale of PCs.</span>),
         right: (<span>The Company may generate <span style={{color:'green'}}>less</span> revenue from the sale of these devices than from the sale of PCs.</span>),
         rule: determiners
     },
     {
-        ID: 4,
+        ID: 5,
         header: "Determiners #2",
         wrong: (<span>Throughout <span style={{color:'red'}}>many</span> of Canada’s history, a large share of federal spending on transport has been in the form of direct subsidies and grants.</span>),
         right: (<span>Throughout <span style={{color:'green'}}>much</span> of Canada’s history, a large share of federal spending on transport has been in the form of direct subsidies and grants.</span>),
         rule: determiners
     },
     {
-        ID: 5,
+        ID: 6,
         header: "Plural uncountable #1",
         wrong: (<span>The federal government, airport operators and <span style={{color:'red'}}>a local police</span> are working closely together.</span>),
         right: (<span>The federal government, airport operators and <span style={{color:'green'}}>local police</span> are working closely together.</span>),
         rule: uncountable_plural_only
     },
     {
-        ID: 6,
+        ID: 7,
         header: "Plural uncountable #1",
         wrong: (<span>It is well known that some Western countries are engaged in the sale of <span style={{color:'red'}}>arm</span> to Iraq, despite also imposing sanctions.</span>),
         right: (<span>It is well known that some Western countries are engaged in the sale of <span style={{color:'green'}}>arms</span> to Iraq, despite also imposing sanctions.</span>),
@@ -155,16 +169,20 @@ const mistakes = [
 
 const subListMistakes = [
     {
+        name: 'Intro',
+        mistakes: mistakes.slice(0,1)
+    },
+    {
         name: mistake1,
-        mistakes: mistakes.slice(0,3)
+        mistakes: mistakes.slice(1,4)
     },
     {
         name: mistake2,
-        mistakes: mistakes.slice(3,5)
+        mistakes: mistakes.slice(4,6)
     },
     {
         name: mistake3,
-        mistakes: mistakes.slice(5)
+        mistakes: mistakes.slice(6)
     },
 ];
 
