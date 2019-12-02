@@ -90,30 +90,82 @@ const MistakeComponent = (props) => {
     )
 
 }
+const mistake1 = "Uncountable amd plural forms or articles"
+const uncountable_plural_form = "Uncountable or ‘mass’ nouns do not go with numbers, and rarely with plural forms or articles. Uncountable, or ‘mass’ nouns, define abstract qualities, materials, liquids, collections and things we conceptualise as being without separate identities or boundaries." 
+
+const mistake2 = "Determiners with countable/uncountable"
+const determiners = "Some determiners only go with countable nouns (many, few, several, every etc). Others only go with uncountable nouns (much, little, less etc). Use the correct type."
+
+const mistake3 = "Only plural uncountable"
+const  uncountable_plural_only = "Some uncountable nouns are only plural, with no singular equivalent. Common examples include arms (weapons), trousers, glasses (spectacles), goods, groceries, clothes, thanks, police, customs (at national boundaries), remains. They can be used with the definite article ‘the’, but not with the indefinite article ‘a/an’ or numbers." 
+
 
 
 const mistakes = [
     {
         ID: 0,
-        header: "Mistake 1",
-        wrong: (<span>wrong <span style={{color:'red'}}>example</span> n1 wrong example n1 wrong example n1 wrong example n1</span>),
-        right: (<span>right <span style={{color:'green'}}>example</span> n1 right example n1 right example n1 right example n1</span>),
-        rule: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        header: "Article",
+        wrong: (<span>The program aimed at improving the safety of aircraft operations during <span style={{color:'red'}}>a severe winter weather</span>.</span>),
+        right: (<span>The program aimed at improving the safety of aircraft operations during <span style={{color:'green'}}> severe winter weather</span>.</span>),
+        rule: uncountable_plural_form
     },
     {
         ID: 1,
-        header: "Mistake 2",
-        wrong: (<span>wrong <span style={{color:'red'}}>example</span> n2 wrong example n2 wrong example n2 wrong example n2</span>),
-        right: (<span>right <span style={{color:'green'}}>example</span> n2 right example n2 right example n2 right example n2</span>),
-        rule: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    }
+        header: "Plural form #1",
+        wrong: (<span>Arbitration allows resolution of disputes in cases involving the movement by <span style={{color:'red'}}>waters</span> of goods required for resupply services.</span>),
+        right: (<span>Arbitration allows resolution of disputes in cases involving the movement by <span style={{color:'green'}}>water</span> of goods required for resupply services.</span>),
+        rule: uncountable_plural_form
+    },
+    {
+        ID: 2,
+        header: "Plural form #2",
+        wrong: (<span>Estimated useful lives currently range between three to five years for electronic <span style={{color:'red'}}>equipments and furnitures</span>.</span>),
+        right: (<span>Estimated useful lives currently range between three to five years for electronic <span style={{color:'green'}}>equipment and furniture</span>.</span>),
+        rule: uncountable_plural_form
+    },
+    {
+        ID: 3,
+        header: "Determiners #1",
+        wrong: (<span>The Company may generate <span style={{color:'red'}}>fewer</span> revenue from the sale of these devices than from the sale of PCs.</span>),
+        right: (<span>The Company may generate <span style={{color:'green'}}>less</span> revenue from the sale of these devices than from the sale of PCs.</span>),
+        rule: determiners
+    },
+    {
+        ID: 4,
+        header: "Determiners #2",
+        wrong: (<span>Throughout <span style={{color:'red'}}>many</span> of Canada’s history, a large share of federal spending on transport has been in the form of direct subsidies and grants.</span>),
+        right: (<span>Throughout <span style={{color:'green'}}>much</span> of Canada’s history, a large share of federal spending on transport has been in the form of direct subsidies and grants.</span>),
+        rule: determiners
+    },
+    {
+        ID: 5,
+        header: "Plural uncountable #1",
+        wrong: (<span>The federal government, airport operators and <span style={{color:'red'}}>a local police</span> are working closely together.</span>),
+        right: (<span>The federal government, airport operators and <span style={{color:'green'}}>local police</span> are working closely together.</span>),
+        rule: uncountable_plural_only
+    },
+    {
+        ID: 6,
+        header: "Plural uncountable #1",
+        wrong: (<span>It is well known that some Western countries are engaged in the sale of <span style={{color:'red'}}>arm</span> to Iraq, despite also imposing sanctions.</span>),
+        right: (<span>It is well known that some Western countries are engaged in the sale of <span style={{color:'green'}}>arms</span> to Iraq, despite also imposing sanctions.</span>),
+        rule: uncountable_plural_only
+    },
 ];
 
 const subListMistakes = [
     {
-        name: "Intro",
-        mistakes: mistakes.slice(0, 2)
-    }
+        name: mistake1,
+        mistakes: mistakes.slice(0,3)
+    },
+    {
+        name: mistake2,
+        mistakes: mistakes.slice(3,5)
+    },
+    {
+        name: mistake3,
+        mistakes: mistakes.slice(5)
+    },
 ];
 
 

@@ -37,57 +37,119 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const questions = [
+const uncountable_plural_form = "Uncountable or ‘mass’ nouns do not go with numbers, and rarely with plural forms or articles. Uncountable, or ‘mass’ nouns, define abstract qualities, materials, liquids, collections and things we conceptualise as being without separate identities or boundaries." 
+
+const determiners = "Some determiners only go with countable nouns (many, few, several, every etc). Others only go with uncountable nouns (much, little, less etc). Use the correct type."
+
+const  uncountable_plural_only = "Some uncountable nouns are only plural, with no singular equivalent. Common examples include arms (weapons), trousers, glasses (spectacles), goods, groceries, clothes, thanks, police, customs (at national boundaries), remains. They can be used with the definite article ‘the’, but not with the indefinite article ‘a/an’ or numbers." 
+
+
+
+const full_questions = [
     {
         str: "Coffee",
         answer: true,
-        rule: '1some rule',
+        rule: 'Coffee is uncountable',
         choice: ['some', 'a']
     },
     {
       str: "Bottle",
       answer: false,
-      rule: '2some rule',
+      rule: 'Bottle is countable',
       choice: ['some', 'a']
     },
     {
         str: "Student",
         answer: false,
-        rule: '2some rule',
+        rule: 'Student is countable',
         choice: ['some', 'a']
     },
     {
         str: "Water",
         answer: true,
-        rule: '2some rule',
+        rule: 'Water is uncountable',
         choice: ['some', 'a']
     },
     {
         str: "Shoes",
         answer: false,
-        rule: '2some rule',
+        rule: 'Shoes is countable',
         choice: ['some', 'a']
     },
     {
         str: "Sadness",
         answer: true,
-        rule: '2some rule',
+        rule: 'Sadness is uncountable',
         choice: ['some', 'a']
     },
     {
         str: "Cat",
         answer: false,
-        rule: '2some rule',
+        rule: 'Cat is countable',
         choice: ['some', 'a']
     },
-]
+    
 
+
+    {
+        str: "The program aimed at improving the safety of aircraft operations during ___ severe winter weather.",
+        answer: false,
+        rule: uncountable_plural_form,
+        choice: ['  ', 'a']
+    },
+    {
+        str: "Arbitration allows resolution of disputes in cases involving the movement by ___ of goods required for resupply services.",
+        answer: true,
+        rule: uncountable_plural_form,
+        choice: ['water', 'waters']
+    },
+    {
+        str: "Estimated useful lives currently range between three to five years for electronic ___",
+        answer: false,
+        rule: uncountable_plural_form,
+        choice: ['equipments and furnitures', 'equipment and furniture']
+    },
+    {
+        str: "The Company may generate ___ revenue from the sale of these devices than from the sale of PCs.",
+        answer: true,
+        rule: determiners,
+        choice: ['less', 'fewer']
+    },
+    {
+        str: "Throughout ___ of Canada’s history, a large share of federal spending on transport has been in the form of direct subsidies and grants.",
+        answer: false,
+        rule: determiners,
+        choice: ['many', 'much']
+    },
+    {
+        str: "The federal government, airport operators and ___ local police are working closely together.",
+        answer: true,
+        rule: uncountable_plural_only,
+        choice: ['a', '   ']
+    },
+    {
+        str: "It is well known that some Western countries are engaged in the sale of ___ to Iraq, despite also imposing sanctions.",
+        answer: false,
+        rule: uncountable_plural_only,
+        choice: ['arm', 'arms']
+    },
+]
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+const questions = shuffle(full_questions).slice(0, 10)
 
 export default function SimpleList(props) {
   const classes = useStyles();
   const [question, setQuestions] = React.useState(0);
   const [solved, setSolved] = React.useState(false);
   const [score, setScore] = React.useState(0);
+
 
   return (
       <div className={classes.root} {...props}>
